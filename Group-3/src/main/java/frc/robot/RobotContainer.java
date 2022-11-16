@@ -4,11 +4,20 @@
 
 package frc.robot;
 
+import java.util.Scanner;
+
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
+import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TankDrive;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -22,6 +31,11 @@ public class RobotContainer {
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  private final DriveTrain drivetrain = new DriveTrain();
+// 
+
+
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -34,7 +48,16 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    XboxController pilot = new XboxController(0);
+
+// Sets the driving default to Tank Drive so it is always active
+    // drivetrain.setDefaultCommand(new TankDrive(drivetrain, pilot::getLeftY, pilot::getRightY)); 
+
+// Sets the driving default to Aracde Drive so it is always active
+    drivetrain.setDefaultCommand(new ArcadeDrive(drivetrain, pilot::getLeftY, pilot::getRightY)); 
+
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
