@@ -15,11 +15,27 @@ package frc.robot;
 public final class Constants {
 
 
-    public static final class Elevator{
-        public static final int elevator_motor= 25;
-        public static final double elevator_speed = 0.5;
+
+    public static final class Shooter{
+        public static final int right_shooter_motor = 15;
+        public static final int left_shooter_motor = 16;
+
+
+//         Right_front: 13
+// Left_front: 11
+// Right_rear: 14
+// Left_rear: 12
+    
 
     }
-   
+
+    public static final class DriveTrain{
+        public static final int right_front = 13;
+        public static final int left_front = 11;
+        public static final int right_back = 14;
+        public static final int left_back = 12;
+
+    }
+
 
 }

@@ -4,59 +4,58 @@
 
 package frc.robot.commands;
 
-import frc.robot.Constants;
-import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.ExampleSubsystem;
+
+import java.util.Scanner;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import frc.robot.subsystems.Shooter;
 /** An example command that uses an example subsystem. */
-public class ElevatorDown extends CommandBase {
-
-  
+public class UpperShoot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Elevator elevator;
+  private final Shooter shooterSubsystem;
+
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-
-
-
-
-  public ElevatorDown(Elevator elevator) {
-    this.elevator = elevator;
+  public UpperShoot(Shooter subsystem) {
+    shooterSubsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(elevator);
+    addRequirements(subsystem);
   }
-
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    elevator.moveElevator(0);
-  }
+    shooterSubsystem.setSpeed(0);
+  
 
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    elevator.moveElevator(-Constants.Elevator.elevator_speed);
 
+
+    shooterSubsystem.setSpeed(0.6);
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    elevator.moveElevator(0);
+    shooterSubsystem.setSpeed(0);
 
   }
-
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+  
     return false;
   }
 }
