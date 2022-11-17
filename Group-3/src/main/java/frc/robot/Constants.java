@@ -29,5 +29,14 @@ public final class Constants {
         public static final int right_shooter_motor = 15;
         public static final int left_shooter_motor = 16;
     }
+    public final class Intake{
+        public static final int compressor_id = 0;
+        public static final int left_solenoid_forward_channel = 1;
+        public static final int left_solenoid_reverse_channel = 2;
+        public static final int right_solenoid_forward_channel = 3;
+        public static final int right_solenoid_reverse_channel = 4;
+        public static final int motor_id = 5;
+
+    }
     
 }
