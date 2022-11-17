@@ -4,15 +4,23 @@
 
 package frc.robot;
 
+import java.util.Scanner;
+
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TankDrive;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,6 +36,11 @@ public class RobotContainer {
 
   private final Intake intake = new Intake();
   private final IntakeCommand intakeCommand = new IntakeCommand(intake);
+
+  private final DriveTrain drivetrain = new DriveTrain();
+
+
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -49,6 +62,11 @@ public class RobotContainer {
 
     // when held it should extend and run spinnys
     Y.whenHeld(intakeCommand);
+// Sets the driving default to Tank Drive so it is always active
+    drivetrain.setDefaultCommand(new TankDrive(drivetrain, pilot::getLeftY, pilot::getRightY)); 
+
+// Sets the driving default to Aracde Drive so it is always active
+    // drivetrain.setDefaultCommand(new ArcadeDrive(drivetrain, pilot::getLeftY, pilot::getRightY)); 
 
   }
 
