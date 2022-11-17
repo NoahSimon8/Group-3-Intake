@@ -18,6 +18,9 @@ import frc.robot.commands.TankDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
+import frc.robot.commands.UpperShoot;
+import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
@@ -39,6 +42,10 @@ public class RobotContainer {
 
   private final DriveTrain drivetrain = new DriveTrain();
 
+  private final Shooter shooterSubsytem = new Shooter();
+
+  private final UpperShoot upperShootCommand = new UpperShoot(shooterSubsytem);
+  private final UpperShoot lowerShootCommand = new UpperShoot(shooterSubsytem);
 
 
 
@@ -67,6 +74,14 @@ public class RobotContainer {
 
 // Sets the driving default to Aracde Drive so it is always active
     // drivetrain.setDefaultCommand(new ArcadeDrive(drivetrain, pilot::getLeftY, pilot::getRightY)); 
+    JoystickButton A = new JoystickButton(pilot, Button.kA.value);
+    JoystickButton B = new JoystickButton(pilot, Button.kB.value);
+
+    A.whenHeld(upperShootCommand);
+    B.whenHeld(lowerShootCommand);
+
+    Scanner scan = new Scanner(System.in);
+    String inp = scan.nextLine();
 
   }
 
