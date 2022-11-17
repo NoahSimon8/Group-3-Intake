@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Intake extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
@@ -19,9 +21,9 @@ public class Intake extends SubsystemBase {
   private Compressor pcmCompressor = new Compressor(Constants.Intake.compressor_id, PneumaticsModuleType.CTREPCM);
 
   private DoubleSolenoid leftDoubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.left_solenoid_forward_channel, Constants.Intake.left_solenoid_reverse_channel);
-  DoubleSolenoid rightDoubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.right_solenoid_forward_channel, Constants.Intake.right_solenoid_reverse_channel);
- 
-  private NEO motor = new WPI_TalonFX(Constants.Intake.motor_id);
+  private DoubleSolenoid rightDoubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.right_solenoid_forward_channel, Constants.Intake.right_solenoid_reverse_channel);
+  private CANSparkMax motor = new CANSparkMax(Constants.Intake.motor_id, MotorType.kBrushless);
+  // private NEO motor = new WPI_TalonFX(Constants.Intake.motor_id);
 
   // private WPI_TalonFX motor = new WPI_TalonFX(0);
 
