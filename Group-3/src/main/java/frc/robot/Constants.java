@@ -31,11 +31,11 @@ public final class Constants {
     }
     public final class Intake{
         public static final int compressor_id = 0;
-        public static final int left_solenoid_forward_channel = 1;
-        public static final int left_solenoid_reverse_channel = 2;
-        public static final int right_solenoid_forward_channel = 3;
-        public static final int right_solenoid_reverse_channel = 4;
-        public static final int motor_id = 5;
+        public static final int left_solenoid_forward_channel = 5;
+        public static final int left_solenoid_reverse_channel = 4;
+        public static final int right_solenoid_forward_channel = 2;
+        public static final int right_solenoid_reverse_channel = 3;
+        public static final int motor_id = 21;
 
     }
     
