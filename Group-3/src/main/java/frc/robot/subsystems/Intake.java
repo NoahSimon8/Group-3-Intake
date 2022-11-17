@@ -4,23 +4,25 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-
 public class Intake extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
 
   private Compressor pcmCompressor = new Compressor(Constants.Intake.compressor_id, PneumaticsModuleType.CTREPCM);
 
-//   DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
-  private DoubleSolenoid doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.solenoid_forward_channel, Constants.Intake.solenoid_reverse_channel);
-//   DoubleSolenoid doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.solenoid_forward_channel, Constants.Intake.solenoid_reverse_channel);
-//   private WPI_TalonFX leftMotor = new WPI_TalonFX(Constants.Shooter.left_shooter_motor);
-  private WPI_TalonFX motor = new WPI_TalonFX(0);
+  private DoubleSolenoid leftDoubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.left_solenoid_forward_channel, Constants.Intake.left_solenoid_reverse_channel);
+  DoubleSolenoid rightDoubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.Intake.right_solenoid_forward_channel, Constants.Intake.right_solenoid_reverse_channel);
+ 
+private WPI_TalonFX motor = new WPI_TalonFX(Constants.Intake.motor_id);
+
+  // private WPI_TalonFX motor = new WPI_TalonFX(0);
 
   public Intake() {
       pcmCompressor.enableDigital();
@@ -30,20 +32,20 @@ public class Intake extends SubsystemBase {
 
 
   public void pistonsForward(){
-    doubleSolenoid.set(Value.kForward);
-//       doubleSolenoid.set(Value.kForward);
+    leftDoubleSolenoid.set(Value.kForward);
+    rightDoubleSolenoid.set(Value.kForward);
 
 
   }
 
   public void pistonsReverse(){
-    doubleSolenoid.set(Value.kReverse);
-//       doubleSolenoid.set(Value.kForward);
+    leftDoubleSolenoid.set(Value.kReverse);
+    rightDoubleSolenoid.set(Value.kReverse);
 
   }
 
-  public void setMotorSpeed(int speed){
-
+  public void setMotorSpeed(double speed){
+    motor.set(speed);
   }
 
   @Override
