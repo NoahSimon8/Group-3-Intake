@@ -8,15 +8,15 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/** An example command that uses an example subsystem. */
+/** A command that uses the intake subsystem. It extends the arms and runs the motor to pick balls up */
 public class IntakeCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Intake intake;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new Intake Command.
    *
-   * @param subsystem The subsystem used by this command.
+   * @param intake The subsystem used by this command.
    */
   public IntakeCommand(Intake intake) {
     this.intake = intake;
@@ -29,24 +29,25 @@ public class IntakeCommand extends CommandBase {
 
 
   // Called when the command is initially scheduled.
+  // moves the pistons forward and starts the motor
   @Override
   public void initialize() {
     intake.pistonsForward();
     intake.setMotorSpeed(0.7);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // This is not used for this command
   @Override
   public void execute() {}
 
-  // Called once the command ends or is interrupted.
+  // When the button is released this will be called. It retracts the pistons and setst the motor speed to 0
   @Override
   public void end(boolean interrupted) {
     intake.pistonsReverse();
     intake.setMotorSpeed(0);
   }
 
-  // Returns true when the command should end.
+  // not used for this command
   @Override
   public boolean isFinished() {
     return false;

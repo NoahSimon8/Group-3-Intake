@@ -45,11 +45,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     XboxController pilot = new XboxController(0);
 
-    JoystickButton Y = new JoystickButton(pilot, Button.kY.value);
-
-    // when held it should extend and run spinnys
-    Y.whenHeld(intakeCommand);
-
+    // when y is held, the intake command runs, extending the pistons and running the motor
+    JoystickButton y = new JoystickButton(pilot, Button.kY.value);
+    y.whenHeld(intakeCommand);
   }
 
   /**

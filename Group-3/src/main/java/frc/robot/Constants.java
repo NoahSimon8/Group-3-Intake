@@ -21,7 +21,6 @@ public final class Constants {
         public static final int right_solenoid_forward_channel = 2;
         public static final int right_solenoid_reverse_channel = 3;
         public static final int motor_id = 21;
-
     }
 
 }
