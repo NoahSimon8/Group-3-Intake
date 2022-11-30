@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.XboxController;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  private ExampleCommand command = new ExampleCommand(m_subsystem);
+  private ExampleCommand m_autoCommand = new ExampleCommand(m_subsystem);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
