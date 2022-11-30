@@ -48,13 +48,6 @@ public class DriveTrain extends SubsystemBase {
   }
 
 
-  public void arcadeDrive(double speed, double rotation){
-    // left and right motors are controlled with the differential drive class
-    drive.arcadeDrive(speed, rotation * Constants.DriveTrain.rotation_speed); // why was it negative ration in the btab code? 
-
-  }
-
-
 
 
   @Override
